@@ -12,4 +12,26 @@ class Student(models.Model):
     email = models.EmailField()
     phone = models.IntegerField()
     complain = models.TextField()
+    published_date = models.DateTimeField(default=timezone.now)
+    
+
+class Parent(models.Model):
+    studentName = models.CharField(max_length=50)
+    usn = models.CharField(max_length=10)
+    semester = models.IntegerField()
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone = models.IntegerField()
+    complain = models.TextField()
+    published_date = models.DateTimeField(default=timezone.now)
+
+
+class Staff(models.Model):
+    staffid = models.CharField(max_length=10)
+    name = models.CharField(max_length=50)
+    department = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone = models.IntegerField()
+    complain = models.TextField()
+    published_date = models.DateTimeField(default=timezone.now)
 

@@ -1,0 +1,13 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+    <div class="student">
+        <p>usn: {{ student.usn }}</p>
+        <p>name: {{ stduent.name }}</p>
+        <p>semester: {{ student.semester }}</p>
+        <p>parentName: {{ student.parentName }}</p>
+        <p>email: {{ student.email }}</p>
+        <p>phone: {{ student.phone }}</p>
+        <p>complain: {{ student.complain|linebreaksbr }}</p>
+    </div>
+{% endblock %}
