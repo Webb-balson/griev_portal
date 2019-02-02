@@ -5,7 +5,7 @@
 {% for stduent in students %}
     <div>
         <p>usn: {{ student.usn }}</p>
-        <h3><a href="{% url 'complain_detail' pk=student.pk %}">{{ stduent.name }}</a></h3>
+        <p>name: {{ student.name }}</p>
         <p>semester: {{ student.semester }}</p>
         <p>parentName: {{ student.parentName }}</p>
         <p>email: {{ student.email }}</p>
