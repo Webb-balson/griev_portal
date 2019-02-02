@@ -8,7 +8,6 @@ from .staff import StaffForm
 from django.shortcuts import redirect
 from django.utils import timezone
 
-
 # Create your views here.
 def home(request):
     #post = get_object_or_404(Post, pk=pk)
@@ -49,7 +48,7 @@ def staff(request):
     return render(request, 'portal/staff.html', {'form': form})
 
 def complain_list(request):
-    students = Student.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    students = Student.objects.all()
     return render(request, 'portal/complain_list.html', {'students':students})
 
 def complain_detail(request, pk):

@@ -13,6 +13,16 @@ class Student(models.Model):
     phone = models.IntegerField()
     complain = models.TextField()
     published_date = models.DateTimeField(default=timezone.now)
+
+    #def __str__(self):
+        #return str({"usn":self.usn , 
+         #"name":self.name ,
+         #"semester":self.semester , 
+         #"parentName":self.parentName,
+         #"email":self.email,
+         #"phone":self.phone,
+         #"complain":self.complain,
+         #"published_date":self.published_date})
     
 
 class Parent(models.Model):

@@ -2,5 +2,13 @@
 
 {% block content %}
 <h2>Home</h2>
+{% if user.is_authenticated %}
+    <h3>Please specify your category:-</h3>
+    <li><a href="{% url 'student' %}"><span class="glyphicon glyphicon-user"></span>Student</a></li>
+    <li><a href="{% url 'parent' %}"><span class="glyphicon glyphicon-user"></span>Parent</a></li>
+    <li><a href="{% url 'staff' %}"><span class="glyphicon glyphicon-user"></span>Staff</a></li>
+{% else %}
+<h3>Please login to lodge your grievance</h3>
+{% endif %}
 
 {% endblock %}

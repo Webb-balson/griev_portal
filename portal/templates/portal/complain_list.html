@@ -2,15 +2,15 @@
 
 {% block content %}
 
-{% for stduent in students %}
+{% for student in students %}
     <div>
-        <p>usn: {{ student.usn }}</p>
-        <p>name: {{ student.name }}</p>
-        <p>semester: {{ student.semester }}</p>
-        <p>parentName: {{ student.parentName }}</p>
-        <p>email: {{ student.email }}</p>
-        <p>phone: {{ student.phone }}</p>
-        <p>{{ post.complain|linebreaksbr }}</p>
+        <p>USN: {{ student.usn }}</p>
+        <p>Name: {{ student.name }}</p>
+        <p>Semester: {{ student.semester }}</p>
+        <p>ParentName: {{ student.parentName }}</p>
+        <p>Email: {{ student.email }}</p>
+        <p>Phone: {{ student.phone }}</p>
+        <p>Complain : {{ student.complain }}</p>
     </div>
 {% endfor %}
 
