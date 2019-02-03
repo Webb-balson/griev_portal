@@ -1,21 +1,68 @@
 {% extends 'portal/base.html' %}
 
 {% block content %}
-<h3>Choose the category:-</h3>
-<li><a href="#"><span class="glyphicon glyphicon-user"></span>Student</a></li>
-<li><a href="#"><span class="glyphicon glyphicon-user"></span>Parent</a></li>
-<li><a href="#"><span class="glyphicon glyphicon-user"></span>Staff</a></li>
 
+<h4>Filter the Grievances:-</h4 >
+
+<div class="container">
+<div class="row">
+<div class="col s4">
+    <a class="waves-effect waves-light btn-large" href="{% url 'complain_list' 'student' %}">Student</a>
+</div>
+<div class="col s4">
+    <a class="waves-effect waves-light btn-large" href="{% url 'complain_list' 'parent' %}">Parent</a>
+</div>
+<div class="col s4">
+    <a class="waves-effect waves-light btn-large" href="{% url 'complain_list' 'staff' %}">Staff</a>
+</div>
+</div></div>
+{% if students %}
+    <h4>Students ({{counts}})</h4>
 {% for student in students %}
-    <div>
-        <p>USN: {{ student.usn }}</p>
-        <p>Name: {{ student.name }}</p>
-        <p>Semester: {{ student.semester }}</p>
-        <p>ParentName: {{ student.parentName }}</p>
-        <p>Email: {{ student.email }}</p>
-        <p>Phone: {{ student.phone }}</p>
-        <p>Complain : {{ student.complain }}</p>
+        
+    <div class="card">
+            <div class="card-content">
+                                <p>USN: {{ student.usn }}</p>
+                <p>Name: {{ student.name }}</p>
+                <p>Semester: {{ student.semester }}</p>
+                <p>ParentName: {{ student.parentName }}</p>
+                <p>Email: {{ student.email }}</p>
+                <p>Phone: {{ student.phone }}</p>
+                <p>Complain : {{ student.complain }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% elif parents%}
+<h4>Parents ({{counts}})</h4>
+    {% for parent in parents %}
+    <div class="card">
+            <div class="card-content">
+            <p>StudentName: {{ parent.studentName }}</p>
+            <p>USN: {{ parent.usn }}</p>
+            <p>Semester: {{ parent.semester }}</p>
+            <p>Name: {{ parent.Name }}</p>
+            <p>Email: {{ parent.email }}</p>
+            <p>Phone: {{ parent.phone }}</p>
+            <p>Complain : {{ parent.complain }}</p>
+        </div>
     </div>
-{% endfor %}
+    {% endfor %}
+{% elif staffs %}
+<h4>Staffs ({{counts}})</h4>
+    {% for staff in staffs %}
+    <div class="card">
+            <div class="card-content">
+            <p>StaffID: {{ staff.staffid }}</p>
+            <p>Name: {{ staff.name }}</p>
+            <p>Department: {{ staff.department }}</p>
+            <p>Email: {{ staff.email }}</p>
+            <p>Phone: {{ staff.phone }}</p>
+            <p>Complain : {{ staff.complain }}</p>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+
+
 
 {% endblock %}

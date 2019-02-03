@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import user_passes_test, login_required
 def home(request):
     #post = get_object_or_404(Post, pk=pk)
     if request.user.is_superuser:
-        return redirect("complain_list")
+        return redirect("complain_list" , "student")
     else:
         return render(request, 'portal/home.html', {'home':home})
 
@@ -53,9 +53,16 @@ def staff(request):
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
-def complain_list(request):
-    students = Student.objects.all()
-    return render(request, 'portal/complain_list.html', {'students':students})
+def complain_list(request , complainer):
+    if complainer=="student":
+        students = Student.objects.all()
+        return render(request, 'portal/complain_list.html', {'students':students , "counts": len(students)})
+    elif complainer == "parent":
+        parents = Parent.objects.all()
+        return render(request, 'portal/complain_list.html', {'parents':parents , "counts": len(parents)})
+    elif complainer == "staff":
+        staffs = Staff.objects.all()
+        return render(request, 'portal/complain_list.html', {'staffs':staffs , "counts": len(staffs)})
 
 # @login_required
 # @user_passes_test(lambda u: u.is_superuser)

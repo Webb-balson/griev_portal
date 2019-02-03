@@ -1,12 +1,14 @@
 {% extends 'portal/base.html' %}
 
 {% block content %}
-  
-    <h2>New Staff Entry</h2>
+<div class="panel panel-default">
+    <div class="panel-heading"><h2>New Staff Entry</h2></div>
+    <div class="panel-body">
     <form method="POST" class="staff-form">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
-
+    </div>
+</div>
 {% endblock %}

@@ -2,27 +2,37 @@
 <html>
     <head>
         <title>Grievance Portal</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/portal.css' %}">
-    </head>
-    <body>
-        <div class="jumbotron">
-            <div class="container text-center">
-              <h1>The Oxford College Of<br> Engineering</h1>      
-              <h5>Accredited by NBA, NAAC & IAO</h5>
-              <h5>10th Milestone, Bommanahalli, Hosur Road, Bangalore - 560 068</h5>
-            </div>
-        </div>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-        <nav class="navbar navbar-default">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link rel="stylesheet"  href="{% static 'css/portal.css' %}">    
+</head>
+    <body>
+
+            <div class="row section top indigo darken-4">
+                <div class="col s1 offset-s1">
+                    <img class="img-logo" src="{% static '/img/children-edu-logo.png' %}"></div>
+                <div class="col s7 offset-s1 "> 
+                     <h3 style="color:white" >The Oxford College of Engineering </h3>
+                     <h5 style="color:white;text-align: center;">Children's Education Society</h5>
+                     <h5 style="color:white">10th Milestone,Bommanahalli,Hosur Road,Bangalore - 560068</h5>
+
+                    </div>
+                <div class="col s1 ">
+                    <img class="img-logo" src="{% static 'img/oxford-logo.png' %}">
+                </div>
+            </div>
+
+        <nav class="navbar navbar-default indigo darken-4">
             <div class="container-fluid">
               <ul class="nav navbar-nav">
                 {% if not user.is_superuser %}
-                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                    <li ><a href="{% url 'home' %}">Home</a></li>
                 {% endif %}
                 {% if user.is_superuser %}
-                    <li class="active"><a href="{% url 'complain_list' %}">Admin</a></li>
+                    <li ><a href="{% url 'complain_list' 'student' %}">Admin</a></li>
                 {% endif %}
                 <!-- <li><a href="#">Status</a></li> -->
               </ul>
@@ -47,8 +57,21 @@
             </div>
         </div>
 
-        <footer class="footer">
-            <p>Footer Text</p>
-        </footer>
+        <footer class="page-footer indigo darken-4"  >
+                <div class="container">
+                  <div class="row">
+                    <div class="col l10 s12">
+                            <h6>Designed and Developed By Aishwarya and Balson Gorai</h6>
+
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                  <div class="container">
+                        <span class="copyleft">&copy;</span> 
+                        2019 Copyleft
+                    </div>
+                </div>
+              </footer>
+                  
     </body>
 </html>

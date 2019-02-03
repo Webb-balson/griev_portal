@@ -1,7 +1,7 @@
 {% extends 'portal/base.html' %}
 
 {% block content %}
-    {% if form == StudentForm %}
+    {% if form == student %}
         <div class="student">
             <p>USN: {{ student.usn }}</p>
             <p>Name: {{ student.name }}</p>
@@ -11,7 +11,7 @@
             <p>Phone: {{ student.phone }}</p>
             <p>Complain: {{ student.complain }}</p>
         </div>
-    {% elif form == ParentForm %}
+    {% elif form == parent %}
         <div class="parent">
             <p>StudentName: {{ parent.studentName }}</p>
             <p>USN: {{ parent.usn }}</p>
