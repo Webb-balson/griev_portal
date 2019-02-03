@@ -7,11 +7,15 @@ from .models import Staff
 from .staff import StaffForm
 from django.shortcuts import redirect
 from django.utils import timezone
+from django.contrib.auth.decorators import user_passes_test, login_required
 
 # Create your views here.
 def home(request):
     #post = get_object_or_404(Post, pk=pk)
-    return render(request, 'portal/home.html', {'home':home})
+    if request.user.is_superuser:
+        return redirect("complain_list")
+    else:
+        return render(request, 'portal/home.html', {'home':home})
 
 
 def student(request):
@@ -20,7 +24,7 @@ def student(request):
         if form.is_valid():
             student = form.save(commit=False)
             student.save()
-            return redirect('complain_detail',pk=student.pk)
+            return redirect('home')
     else:
         form = StudentForm()
     return render(request, 'portal/student.html', {'form': form})
@@ -31,7 +35,7 @@ def parent(request):
         if form.is_valid():
             parent = form.save(commit=False)
             parent.save()
-            return redirect('complain_detail',pk=parent.pk)
+            return redirect('home')
     else:
         form = ParentForm()
     return render(request, 'portal/parent.html', {'form': form})
@@ -42,15 +46,19 @@ def staff(request):
         if form.is_valid():
             staff = form.save(commit=False)
             staff.save()
-            return redirect('complain_detail',pk=staff.pk)
+            return redirect('home')
     else:
         form = StaffForm()
     return render(request, 'portal/staff.html', {'form': form})
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def complain_list(request):
     students = Student.objects.all()
     return render(request, 'portal/complain_list.html', {'students':students})
 
-def complain_detail(request, pk):
-    student = get_object_or_404(Student, pk=pk)
-    return render(request, 'portal/complain_detail.html', {'student':student})
+# @login_required
+# @user_passes_test(lambda u: u.is_superuser)
+# def complain_detail(request, pk):
+#     student = get_object_or_404(Student, pk=pk)
+#     return render(request, 'portal/complain_detail.html', {'student':student})

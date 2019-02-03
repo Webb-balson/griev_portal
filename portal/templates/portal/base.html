@@ -18,9 +18,13 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="#">Admin</a></li>
-                <li><a href="#">Status</a></li>
+                {% if not user.is_superuser %}
+                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                {% endif %}
+                {% if user.is_superuser %}
+                    <li class="active"><a href="{% url 'complain_list' %}">Admin</a></li>
+                {% endif %}
+                <!-- <li><a href="#">Status</a></li> -->
               </ul>
               <ul class="nav navbar-nav navbar-right">
                   {%  if user.is_authenticated %}
