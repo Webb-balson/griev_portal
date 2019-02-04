@@ -11,7 +11,6 @@ from django.contrib.auth.decorators import user_passes_test, login_required
 
 # Create your views here.
 def home(request):
-    #post = get_object_or_404(Post, pk=pk)
     if request.user.is_superuser:
         return redirect("complain_list" , "student")
     else:
@@ -64,8 +63,3 @@ def complain_list(request , complainer):
         staffs = Staff.objects.all()
         return render(request, 'portal/complain_list.html', {'staffs':staffs , "counts": len(staffs)})
 
-# @login_required
-# @user_passes_test(lambda u: u.is_superuser)
-# def complain_detail(request, pk):
-#     student = get_object_or_404(Student, pk=pk)
-#     return render(request, 'portal/complain_detail.html', {'student':student})

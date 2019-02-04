@@ -22,7 +22,8 @@
         
     <div class="card">
             <div class="card-content">
-                                <p>USN: {{ student.usn }}</p>
+                <p>PublishedDate: {{ student.published_date }}</p>
+                <p>USN: {{ student.usn }}</p>
                 <p>Name: {{ student.name }}</p>
                 <p>Semester: {{ student.semester }}</p>
                 <p>ParentName: {{ student.parentName }}</p>
@@ -36,7 +37,8 @@
 <h4>Parents ({{counts}})</h4>
     {% for parent in parents %}
     <div class="card">
-            <div class="card-content">
+        <div class="card-content">
+            <p>PublishedDate: {{ parent.published_date }}</p>
             <p>StudentName: {{ parent.studentName }}</p>
             <p>USN: {{ parent.usn }}</p>
             <p>Semester: {{ parent.semester }}</p>
@@ -51,7 +53,8 @@
 <h4>Staffs ({{counts}})</h4>
     {% for staff in staffs %}
     <div class="card">
-            <div class="card-content">
+        <div class="card-content">
+            <p>PublishedDate: {{ staff.published_date }}</p>
             <p>StaffID: {{ staff.staffid }}</p>
             <p>Name: {{ staff.name }}</p>
             <p>Department: {{ staff.department }}</p>

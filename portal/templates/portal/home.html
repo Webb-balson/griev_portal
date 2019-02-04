@@ -1,14 +1,44 @@
 {% extends "portal/base.html" %}
+{% load static %}
 
 {% block content %}
-<h2>Home</h2>
+{% if not user.is_authenticated %}
+<div class="container">
+	<div class="row">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col l10">
+              <img src="{% static '/img/grievance.jpg' %}" alt="" class="square responsive-img"> 
+            </div>
+            <div class="col l8">
+              <span class="black-text">
+				The Acas Code of Practice on Disciplinary and Grievance Procedures defines grievances as “concerns,
+				problems or complaints that employees raise with their employers”.
+				The organisation's grievance procedure should be used to deal with individual grievances.
+				The process should not be used to resolve collective issues.
+              </span>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% if user.is_authenticated %}
     <h3>Please specify your category:-</h3>
-    <li><a href="{% url 'student' %}"><span class="glyphicon glyphicon-user"></span>Student</a></li>
-    <li><a href="{% url 'parent' %}"><span class="glyphicon glyphicon-user"></span>Parent</a></li>
-    <li><a href="{% url 'staff' %}"><span class="glyphicon glyphicon-user"></span>Staff</a></li>
+    <div class="container">
+            <div class="row">
+            <div class="col s4">
+                <a class="waves-effect waves-light btn-large" href="{% url 'student' %}">Student</a>
+            </div>
+            <div class="col s4">
+                <a class="waves-effect waves-light btn-large" href="{% url 'parent' %}">Parent</a>
+            </div>
+            <div class="col s4">
+                <a class="waves-effect waves-light btn-large" href="{% url 'staff' %}">Staff</a>
+            </div>
+            </div></div>
 {% else %}
-<h3>Please login to lodge your grievance</h3>
+<h3>Please Login to lodge your grievance</h3>
 {% endif %}
 
 {% endblock %}
