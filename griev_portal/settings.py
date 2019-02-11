@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'dzj@ssh)h4wqzb1@*b5+hu5ace3aol5cwud7=5x#hvym%6b9au'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','mean-bear-13.localtunnel.me']
 
 
 # Application definition
@@ -115,6 +115,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Email verification
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'youremail@gmail.com'
+EMAIL_HOST_PASSWORD = 'password'
+EMAIL_PORT = 587
+ACCOUNT_ACTIVATION_DAYS = 1 # One-day activation window; you may, of course, use a different value.
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

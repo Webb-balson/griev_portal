@@ -2,27 +2,7 @@
 {% load static %}
 
 {% block content %}
-{% if not user.is_authenticated %}
-<div class="container">
-	<div class="row">
-        <div class="card-panel grey lighten-5 z-depth-1">
-          <div class="row valign-wrapper">
-            <div class="col l10">
-              <img src="{% static '/img/grievance.jpg' %}" alt="" class="square responsive-img"> 
-            </div>
-            <div class="col l8">
-              <span class="black-text">
-				The Acas Code of Practice on Disciplinary and Grievance Procedures defines grievances as “concerns,
-				problems or complaints that employees raise with their employers”.
-				The organisation's grievance procedure should be used to deal with individual grievances.
-				The process should not be used to resolve collective issues.
-              </span>
-            </div>
-          </div>
-        </div>
-    </div>
-</div>
-{% endif %}
+
 {% if user.is_authenticated %}
     <h3>Please specify your category:-</h3>
     <div class="container">
@@ -39,6 +19,30 @@
             </div></div>
 {% else %}
 <h3>Please Login to lodge your grievance</h3>
+<div class="container">
+        <div class="row">
+            <div class="card-panel grey lighten-5 z-depth-1">
+              <div class="row valign-wrapper">
+                <div class="col l10">
+                  <img src="{% static '/img/grievance.jpg' %}" alt="" class="square responsive-img"> 
+                </div>
+                <div class="col l8">
+                  <span class="black-text">
+                    The Acas Code of Practice on Disciplinary and Grievance Procedures defines grievances as “concerns,
+                    problems or complaints that employees raise with their employers”.
+                    The organisation's grievance procedure should be used to deal with individual grievances.
+                    The process should not be used to resolve collective issues.
+                  </span>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
 {% endif %}
+
+{% if not user.is_authenticated %}
+
+{% endif %}
+
 
 {% endblock %}
